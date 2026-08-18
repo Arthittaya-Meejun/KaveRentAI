@@ -98,5 +98,9 @@ pytest
 
 ## เอกสารเพิ่มเติม
 
-- [คู่มือข้อมูลต้นฉบับ](docs/original_data_guide.md)
+- [รายการงานและผู้รับผิดชอบ](TASKS.md)
+- [วิธีทำงานร่วมกันผ่าน Git](CONTRIBUTING.md)
+- [คำอธิบายโฟลเดอร์ข้อมูล](data/README.md)
+- [คำอธิบาย Notebook และผู้รับผิดชอบ](notebooks/README.md)
 - [ขอบเขตและกติกาการทำงาน](docs/project_scope.md)
+- [รายการเอกสารทั้งหมด](docs/README.md)
