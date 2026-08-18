@@ -1,2 +1,0 @@
-# KaveRentAI
-Final Project jaaaaaaaaaaaa
