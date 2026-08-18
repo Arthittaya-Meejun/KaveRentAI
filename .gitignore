@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and secrets
+.venv/
+venv/
+.env
+.env.*
+.streamlit/secrets.toml
+
+# Jupyter and editors
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# Operating system
+.DS_Store
+Thumbs.db
+
+# Generated modeling datasets
+data/modeling/*
+!data/modeling/.gitkeep
+
+# Trained model artifacts
+*.cbm
+*.pkl
+*.pickle
+*.joblib
+
+# Generated reports
+reports/figures/*
+reports/metrics/*
+reports/tables/*
+!reports/**/.gitkeep
+
+# Local build outputs
+output/
+tmp/

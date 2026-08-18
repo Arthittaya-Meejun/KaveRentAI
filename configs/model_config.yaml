@@ -1,0 +1,27 @@
+random_seed: 42
+
+time_split:
+  train_end: "2025-12-31"
+  validation_end: "2026-03-31"
+
+models:
+  renewal:
+    target: will_renew
+    task: classification
+    baseline: logistic_regression
+    main: catboost_classifier
+  rental_price:
+    target: rent
+    task: regression
+    baseline: linear_regression
+    main: catboost_regressor
+  lease_probability:
+    target: leased
+    task: classification
+    baseline: logistic_regression
+    main: catboost_classifier
+  weeks_on_market:
+    target: weeks_on_market
+    task: regression
+    baseline: linear_regression
+    main: catboost_regressor
