@@ -13,9 +13,9 @@
 
 | งาน | ไฟล์หลัก | สถานะ |
 |---|---|---|
-| ตรวจคุณภาพข้อมูลทั้ง 5 ตาราง | `notebooks/01_common_data_quality.ipynb` | Todo |
-| ตรวจโค้ดโหลดข้อมูลที่เตรียมไว้ | `src/kaverentai/data/load_data.py` | Review |
-| ตรวจโค้ดตรวจสอบข้อมูลที่เตรียมไว้ | `src/kaverentai/data/validate_data.py` | Review |
+| ตรวจคุณภาพข้อมูลทั้ง 5 ตาราง | `notebooks/01_common_data_quality.ipynb` | Review |
+| ตรวจโค้ดโหลดข้อมูลที่เตรียมไว้ | `src/kaverentai/data/load_data.py` | Done |
+| ตรวจโค้ดตรวจสอบข้อมูลที่เตรียมไว้ | `src/kaverentai/data/validate_data.py` | Done |
 | EDA การต่อสัญญา | `notebooks/02_renewal_eda.ipynb` | Todo |
 | สร้าง Feature การต่อสัญญา | `src/kaverentai/features/renewal_features.py` | Todo |
 | สร้างโมเดลการต่อสัญญา | `src/kaverentai/models/train_renewal.py` | Todo |
