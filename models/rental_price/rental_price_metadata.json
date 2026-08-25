@@ -1,0 +1,97 @@
+{
+  "winner_model": "Gradient Boosting",
+  "model_selection_metric": "official_validation_mae",
+  "tuning_metric": "mean_rolling_validation_mae",
+  "tuning_method": "4 expanding quarterly time folds",
+  "rolling_folds": [
+    {
+      "name": "2025_Q1",
+      "train_end": "2024-12-31",
+      "validation_end": "2025-03-31",
+      "train_rows": 23898,
+      "validation_rows": 2546
+    },
+    {
+      "name": "2025_Q2",
+      "train_end": "2025-03-31",
+      "validation_end": "2025-06-30",
+      "train_rows": 26444,
+      "validation_rows": 6614
+    },
+    {
+      "name": "2025_Q3",
+      "train_end": "2025-06-30",
+      "validation_end": "2025-09-30",
+      "train_rows": 33058,
+      "validation_rows": 3001
+    },
+    {
+      "name": "2025_Q4",
+      "train_end": "2025-09-30",
+      "validation_end": "2025-12-31",
+      "train_rows": 36059,
+      "validation_rows": 4521
+    }
+  ],
+  "all_features": [
+    "floor",
+    "size_sqm",
+    "room_type",
+    "view",
+    "furnished",
+    "lease_months",
+    "is_renewal",
+    "project_name",
+    "university",
+    "distance_to_campus_m",
+    "facility_count",
+    "start_year",
+    "start_month"
+  ],
+  "stepwise_selected_features": [
+    "room_type",
+    "project_name",
+    "start_month",
+    "view",
+    "is_renewal",
+    "furnished",
+    "floor"
+  ],
+  "gradient_boosting_params": {
+    "n_estimators": 350,
+    "learning_rate": 0.03,
+    "max_depth": 4,
+    "min_samples_leaf": 15,
+    "subsample": 0.9
+  },
+  "metrics": [
+    {
+      "model": "Stepwise MLR",
+      "split": "validation",
+      "mae": 770.8383856304724,
+      "rmse": 1051.459787248719,
+      "r2": 0.7185966352153489
+    },
+    {
+      "model": "Gradient Boosting",
+      "split": "validation",
+      "mae": 759.5984403132247,
+      "rmse": 1021.2451668979006,
+      "r2": 0.7345370118076548
+    },
+    {
+      "model": "Stepwise MLR",
+      "split": "test",
+      "mae": 1113.7160110311668,
+      "rmse": 1395.8010492185929,
+      "r2": 0.5853514631329084
+    },
+    {
+      "model": "Gradient Boosting",
+      "split": "test",
+      "mae": 1032.3653169627814,
+      "rmse": 1314.115292638285,
+      "r2": 0.6324638726289238
+    }
+  ]
+}
