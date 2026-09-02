@@ -8,14 +8,22 @@
 
 โปรเจกต์ประกอบด้วยโมเดลหลัก 4 งาน
 
-| งาน | Target | Baseline | โมเดลหลัก |
-|---|---|---|---|
-| การต่อสัญญา | `will_renew` | Logistic Regression | CatBoostClassifier |
-| ราคาค่าเช่า | `rent` | Linear Regression | CatBoostRegressor |
-| โอกาสปล่อยเช่า | `leased` | Logistic Regression | CatBoostClassifier |
-| ระยะเวลาปล่อยเช่า | `weeks_on_market` | Linear Regression | CatBoostRegressor |
+| งาน | Target | Baseline | โมเดลเปรียบเทียบ | โมเดลที่เลือก |
+|---|---|---|---|---|
+| อัตราการต่อสัญญารายโครงการ–เดือน | `renewal_rate` | Historical-rate Baseline | Binomial Logistic Regression | Historical-rate Baseline |
+| ราคาค่าเช่า | `rent` | Linear Regression | CatBoostRegressor | รอสรุปผล |
+| โอกาสปล่อยเช่าภายใน 4 สัปดาห์ | `leased_within_4_weeks` | Logistic Regression | CatBoostClassifier | CatBoostClassifier |
+| ระยะเวลาปล่อยเช่า | `weeks_on_market` | Linear Regression | CatBoostRegressor | รอสรุปผล |
 
 ผลจากโมเดลจะนำไปใช้ใน Price Recommendation Engine, What-if Simulation, Dashboard และ Web Application
+
+งาน Renewal ใช้หน่วยวิเคราะห์ระดับ **โครงการ–เดือน** เพื่อประมาณอัตราและจำนวน
+สัญญาที่คาดว่าจะต่อ ไม่ได้ใช้เพื่อระบุผู้เช่ารายบุคคล โดยผล Validation ปัจจุบัน
+เลือก Historical-rate Baseline เนื่องจากให้ความคลาดเคลื่อนต่ำกว่าโมเดลเปรียบเทียบ
+
+งาน Lease Probability ใช้ข้อมูลที่ทราบในวันลงประกาศเพื่อประมาณโอกาสปล่อยเช่า
+ภายใน 4 สัปดาห์ และตัดประกาศช่วงท้ายที่มีเวลาติดตามไม่ครบออก ผล Validation
+เลือก CatBoostClassifier เนื่องจากให้ Log Loss ต่ำกว่า Logistic Regression
 
 ## โครงสร้างโปรเจกต์
 
@@ -67,6 +75,14 @@ leases = data["leases"]
 
 ```powershell
 python -m kaverentai.data.validate_data
+```
+
+สร้างข้อมูลและฝึกโมเดล Lease Probability:
+
+```powershell
+python -m kaverentai.features.lease_probability_features
+python -m kaverentai.models.train_lease_probability
+python -m kaverentai.models.diagnose_lease_probability
 ```
 
 เปิด Web Application:

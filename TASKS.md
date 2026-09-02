@@ -13,22 +13,22 @@
 
 | งาน | ไฟล์หลัก | สถานะ |
 |---|---|---|
-| ตรวจคุณภาพข้อมูลทั้ง 5 ตาราง | `notebooks/01_common_data_quality.ipynb` | Review |
+| ตรวจคุณภาพข้อมูลทั้ง 5 ตาราง | `notebooks/01_common_data_quality.ipynb` | Done |
 | ตรวจโค้ดโหลดข้อมูลที่เตรียมไว้ | `src/kaverentai/data/load_data.py` | Done |
 | ตรวจโค้ดตรวจสอบข้อมูลที่เตรียมไว้ | `src/kaverentai/data/validate_data.py` | Done |
-| EDA การต่อสัญญา | `notebooks/02_renewal_eda.ipynb` | Todo |
-| สร้าง Feature การต่อสัญญา | `src/kaverentai/features/renewal_features.py` | Todo |
-| สร้างโมเดลการต่อสัญญา | `src/kaverentai/models/train_renewal.py` | Todo |
-| EDA โอกาสปล่อยเช่า | `notebooks/03_lease_probability_eda.ipynb` | Todo |
-| สร้าง Feature โอกาสปล่อยเช่า | `src/kaverentai/features/lease_probability_features.py` | Todo |
-| สร้างโมเดลโอกาสปล่อยเช่า | `src/kaverentai/models/train_lease_probability.py` | Todo |
-| สร้างตัวประเมินโมเดล Classification | `src/kaverentai/models/evaluate_classification.py` | Todo |
+| EDA อัตราการต่อสัญญาระดับโครงการ–เดือน | `notebooks/02_renewal_eda.ipynb` | Done |
+| สร้าง Feature อัตราการต่อสัญญา | `src/kaverentai/features/renewal_rate_features.py` | Done |
+| สร้างโมเดลอัตราการต่อสัญญา | `src/kaverentai/models/train_renewal_rate.py` | Done |
+| EDA โอกาสปล่อยเช่า | `notebooks/03_lease_probability_eda.ipynb` | Done |
+| สร้าง Feature โอกาสปล่อยเช่า | `src/kaverentai/features/lease_probability_features.py` | Done |
+| สร้างโมเดลโอกาสปล่อยเช่า | `src/kaverentai/models/train_lease_probability.py` | Done |
+| สร้างตัวประเมินโมเดล Classification | `src/kaverentai/models/evaluate_classification.py` | Done |
 
 ## อาทิตยา: Regression และ Decision System
 
 | งาน | ไฟล์หลัก | สถานะ |
 |---|---|---|
-| ตรวจโค้ดแบ่ง Train/Validation/Test ที่เตรียมไว้ | `src/kaverentai/data/split_data.py` | Review |
+| ตรวจโค้ดแบ่ง Train/Validation/Test ที่เตรียมไว้ | `src/kaverentai/data/split_data.py` | Done |
 | EDA ราคาค่าเช่า | `notebooks/04_rental_price_eda.ipynb` | Todo |
 | สร้าง Feature ราคาค่าเช่า | `src/kaverentai/features/rental_price_features.py` | Todo |
 | สร้างโมเดลราคาค่าเช่า | `src/kaverentai/models/train_rental_price.py` | Todo |

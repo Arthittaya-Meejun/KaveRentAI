@@ -12,3 +12,10 @@ Notebook ใช้สำหรับ EDA การทดลอง และส�
 | 6 | `06_final_results.ipynb` | อาทิตยา และทอฝันช่วยตรวจ |
 
 แต่ละคนสร้างและแก้เฉพาะ Notebook ของตัวเอง เพื่อลดปัญหา Git conflict
+
+`02_renewal_eda.ipynb` ใช้หน่วยวิเคราะห์ระดับโครงการ–เดือน และประเมิน
+Historical-rate Baseline เทียบกับ Binomial Logistic Regression สำหรับงาน
+Renewal Rate Forecasting
+
+`03_lease_probability_eda.ipynb` ใช้ข้อมูลเฉพาะวันลงประกาศ และนิยาม Target
+เป็นการปล่อยเช่าภายใน 4 สัปดาห์ เพื่อหลีกเลี่ยงการใช้ประกาศที่ยังติดตามผลไม่ครบ

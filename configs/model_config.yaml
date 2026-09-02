@@ -6,20 +6,39 @@ time_split:
 
 models:
   renewal:
-    target: will_renew
-    task: classification
-    baseline: logistic_regression
-    main: catboost_classifier
+    target: renewal_rate
+    task: rate_forecasting
+    unit_of_analysis: project_month
+    baseline: historical_rate
+    main: binomial_logistic_regression
+    binomial_logistic_c: 0.001
+    selected: historical_rate_baseline
+    metrics:
+      - weighted_mae
+      - weighted_rmse
+      - binomial_log_loss
   rental_price:
     target: rent
     task: regression
     baseline: linear_regression
     main: catboost_regressor
   lease_probability:
-    target: leased
-    task: classification
+    target: leased_within_4_weeks
+    task: binary_classification
+    horizon_weeks: 4
     baseline: logistic_regression
     main: catboost_classifier
+    selected: catboost_classifier
+    selection_metric: log_loss
+    catboost_iterations: 300
+    catboost_depth: 6
+    catboost_learning_rate: 0.05
+    metrics:
+      - roc_auc
+      - average_precision
+      - log_loss
+      - balanced_accuracy
+      - f1
   weeks_on_market:
     target: weeks_on_market
     task: regression
