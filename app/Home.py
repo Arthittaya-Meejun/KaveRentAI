@@ -15,10 +15,8 @@ left, right = st.columns(2)
 with left:
     st.markdown("### Predictive Models")
     st.markdown(
-        "- Project-Month Renewal Rate Forecasting\n"
         "- Rental Price Prediction\n"
-        "- Lease Probability\n"
-        "- Weeks on Market"
+        "- Time-to-Lease Prediction"
     )
 
 with right:

@@ -1,1 +1,1 @@
-"""Training pipelines for renewal-rate, classification, and regression tasks."""
+"""Regression pipelines for rental price and time-to-lease prediction."""

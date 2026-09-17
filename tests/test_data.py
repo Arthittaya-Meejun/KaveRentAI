@@ -4,11 +4,7 @@ import pytest
 from kaverentai.config import (
     DEFAULT_TRAIN_END,
     DEFAULT_VALIDATION_END,
-    RENEWAL_LOGISTIC_C,
-    RENEWAL_SELECTED_MODEL,
-    LEASE_PROBABILITY_HORIZON_WEEKS,
-    LEASE_PROBABILITY_SELECTED_MODEL,
-    LEASE_PROBABILITY_TARGET,
+    RANDOM_SEED,
     load_model_config,
 )
 from kaverentai.data.load_data import TABLES, load_all_data
@@ -59,19 +55,7 @@ def test_chronological_split_rejects_reversed_cutoffs() -> None:
 
 def test_runtime_settings_come_from_model_config() -> None:
     config = load_model_config()
-    renewal = config["models"]["renewal"]
-    lease_probability = config["models"]["lease_probability"]
 
     assert DEFAULT_TRAIN_END == config["time_split"]["train_end"]
     assert DEFAULT_VALIDATION_END == config["time_split"]["validation_end"]
-    assert RENEWAL_LOGISTIC_C == renewal["binomial_logistic_c"]
-    assert RENEWAL_SELECTED_MODEL == renewal["selected"]
-    assert LEASE_PROBABILITY_TARGET == lease_probability["target"]
-    assert (
-        LEASE_PROBABILITY_HORIZON_WEEKS
-        == lease_probability["horizon_weeks"]
-    )
-    assert (
-        LEASE_PROBABILITY_SELECTED_MODEL
-        == lease_probability["selected"]
-    )
+    assert RANDOM_SEED == config["random_seed"]
