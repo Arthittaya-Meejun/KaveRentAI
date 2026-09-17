@@ -18,12 +18,13 @@
 | ตรวจโค้ดตรวจสอบข้อมูลที่เตรียมไว้ | `src/kaverentai/data/validate_data.py` | Done |
 | EDA ระยะเวลาในการปล่อยเช่าและตรวจ Outlier | `notebooks/02_time_to_lease_eda.ipynb` | Review |
 | ตรวจ Feature ที่ทราบ ณ วันเริ่มลงประกาศและป้องกัน Data Leakage | `notebooks/02_time_to_lease_eda.ipynb` | Review |
-| สร้าง Modeling Dataset สำหรับ Time-to-Lease | `src/kaverentai/features/time_to_lease_features.py` | Todo |
-| สร้างและเปรียบเทียบ Multiple Linear Regression กับ Random Forest Regressor | `src/kaverentai/models/train_time_to_lease.py` | Todo |
-| ประเมินโมเดลด้วย MAE, RMSE และ R² บนข้อมูลแบ่งตามเวลา | `src/kaverentai/models/evaluate_time_to_lease.py` | Todo |
-| สร้างฟังก์ชันทำนายจำนวนสัปดาห์สำหรับเชื่อม Price Engine และ Web Application | `src/kaverentai/models/time_to_lease_predictor.py` | Todo |
-| ทดสอบ Feature, Data Split และผลลัพธ์ของ Time-to-Lease | `tests/test_time_to_lease.py` | Todo |
-| สรุปผล Time-to-Lease สำหรับรายงานฉบับสุดท้าย | `notebooks/06_final_results.ipynb` | Todo |
+| สร้าง Modeling Dataset สำหรับ Time-to-Lease | `src/kaverentai/features/time_to_lease_features.py` | Review |
+| สร้างและเปรียบเทียบ Multiple Linear Regression กับ Random Forest Regressor | `src/kaverentai/models/train_time_to_lease.py` | Review |
+| ประเมินโมเดลด้วย MAE, RMSE และ R² แบบ Matured Time Split | `src/kaverentai/models/evaluate_time_to_lease.py` | Review |
+| สร้างฟังก์ชันทำนายจำนวนสัปดาห์สำหรับเชื่อม Price Engine และ Web Application | `src/kaverentai/models/time_to_lease_predictor.py` | Review |
+| ทดสอบ Feature และ Data Split ของ Time-to-Lease | `tests/test_time_to_lease.py` | Review |
+| ทดสอบผลลัพธ์ของโมเดล Time-to-Lease | `tests/test_time_to_lease_model.py` | Review |
+| สรุปผล Time-to-Lease สำหรับรายงานฉบับสุดท้าย | `notebooks/06_final_results.ipynb` | Review |
 
 ## อาทิตยา: Regression และ Decision System
 

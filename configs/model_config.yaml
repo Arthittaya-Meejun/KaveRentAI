@@ -16,6 +16,11 @@ models:
     baseline: linear_regression
     main: random_forest_regressor
     selection_metric: mae
+    evaluation:
+      train_end: "2024-12-31"
+      validation_end: "2025-03-31"
+      test_end: "2025-06-30"
+      minimum_follow_up_weeks: 52
     metrics:
       - mae
       - rmse

@@ -47,3 +47,34 @@ DEFAULT_TRAIN_END = str(
 DEFAULT_VALIDATION_END = str(
     _required_setting(_MODEL_CONFIG, "time_split", "validation_end")
 )
+
+# Time-to-Lease ต้องเว้นระยะติดตามหลัง Test เพื่อไม่ให้ชุดทดสอบมีเฉพาะ
+# ห้องที่ปล่อยเช่าได้เร็ว ส่วน Time Split หลักด้านบนยังใช้กับงานราคาค่าเช่า
+TIME_TO_LEASE_TRAIN_END = str(
+    _required_setting(
+        _MODEL_CONFIG, "models", "time_to_lease", "evaluation", "train_end"
+    )
+)
+TIME_TO_LEASE_VALIDATION_END = str(
+    _required_setting(
+        _MODEL_CONFIG,
+        "models",
+        "time_to_lease",
+        "evaluation",
+        "validation_end",
+    )
+)
+TIME_TO_LEASE_TEST_END = str(
+    _required_setting(
+        _MODEL_CONFIG, "models", "time_to_lease", "evaluation", "test_end"
+    )
+)
+TIME_TO_LEASE_MIN_FOLLOW_UP_WEEKS = int(
+    _required_setting(
+        _MODEL_CONFIG,
+        "models",
+        "time_to_lease",
+        "evaluation",
+        "minimum_follow_up_weeks",
+    )
+)
