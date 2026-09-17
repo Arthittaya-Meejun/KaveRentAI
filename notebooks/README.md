@@ -13,4 +13,5 @@ Notebook ใช้สำหรับ EDA การทดลอง และส�
 
 `02_time_to_lease_eda.ipynb` ใช้ `weeks_on_market` เป็น Target และใช้เฉพาะ
 ประกาศที่ `leased = True` สำหรับงาน Regression โดย Feature ต้องเป็นข้อมูลที่
-ทราบแล้ว ณ วันเริ่มลงประกาศ
+ทราบแล้ว ณ วันเริ่มลงประกาศ การประเมินใช้ Matured Time Split โดยเว้นระยะ
+ติดตามหลัง Test อย่างน้อย 52 สัปดาห์ และไม่นำ `post_test` ไปวัดผล

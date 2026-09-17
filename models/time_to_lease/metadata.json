@@ -1,0 +1,86 @@
+{
+  "target": "weeks_on_market",
+  "winner_model": "Random Forest",
+  "selection_metric": "validation_mae_weeks",
+  "evaluation_method": "matured_time_split",
+  "evaluation_cutoffs": {
+    "train_end": "2024-12-31",
+    "validation_end": "2025-03-31",
+    "test_end": "2025-06-30",
+    "minimum_follow_up_weeks": 52
+  },
+  "features": [
+    "floor",
+    "size_sqm",
+    "room_type",
+    "view",
+    "furnished",
+    "first_asking_rent",
+    "project_name",
+    "university",
+    "distance_to_campus_m",
+    "facility_count",
+    "season_listed",
+    "listing_year",
+    "listing_month",
+    "market_occupancy",
+    "market_demand_pressure",
+    "market_median_asking_rent",
+    "rent_to_market_ratio",
+    "missing_market_history"
+  ],
+  "split_rows": {
+    "train": 16993,
+    "validation": 1045,
+    "test": 2247
+  },
+  "deployment_training_rows": 20285,
+  "excluded_post_test_rows": 9643,
+  "random_forest_params": {
+    "n_estimators": 150,
+    "max_depth": 12,
+    "min_samples_leaf": 5,
+    "max_features": 0.8,
+    "random_state": 42,
+    "n_jobs": 1
+  },
+  "metrics": [
+    {
+      "model": "Multiple Linear Regression",
+      "split": "validation",
+      "mae_weeks": 3.0101404264675167,
+      "rmse_weeks": 4.230090708208821,
+      "r2": 0.4971572072377648,
+      "within_1_week_pct": 25.550239234449762,
+      "within_2_weeks_pct": 46.79425837320574
+    },
+    {
+      "model": "Random Forest",
+      "split": "validation",
+      "mae_weeks": 2.7480884804877816,
+      "rmse_weeks": 3.7566706604741684,
+      "r2": 0.6034124144796986,
+      "within_1_week_pct": 24.593301435406698,
+      "within_2_weeks_pct": 46.02870813397129
+    },
+    {
+      "model": "Multiple Linear Regression",
+      "split": "test",
+      "mae_weeks": 3.413948924298277,
+      "rmse_weeks": 5.97613701566903,
+      "r2": -0.13204264416838885,
+      "within_1_week_pct": 40.00890075656431,
+      "within_2_weeks_pct": 54.73965287049399
+    },
+    {
+      "model": "Random Forest",
+      "split": "test",
+      "mae_weeks": 2.427048807128019,
+      "rmse_weeks": 4.793089352085735,
+      "r2": 0.27179652807314914,
+      "within_1_week_pct": 42.679127725856695,
+      "within_2_weeks_pct": 66.17712505562973
+    }
+  ],
+  "important_note": "ใช้เฉพาะรายการ leased=True และประเมินเฉพาะ Matured Cohorts ที่มีระยะติดตามอย่างน้อย 52 สัปดาห์; รายการหลัง test_end เป็น post_test และไม่ใช้วัดผล"
+}

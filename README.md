@@ -11,7 +11,7 @@
 | งาน | Target | Baseline | โมเดลเปรียบเทียบ | โมเดลที่เลือก |
 |---|---|---|---|---|
 | ราคาค่าเช่า | `rent` | Linear Regression | CatBoostRegressor | รอสรุปผล |
-| ระยะเวลาปล่อยเช่า | `weeks_on_market` | Multiple Linear Regression | Random Forest Regressor | รอสรุปผล |
+| ระยะเวลาปล่อยเช่า | `weeks_on_market` | Multiple Linear Regression | Random Forest Regressor | Random Forest Regressor |
 
 ผลจากโมเดลจะนำไปใช้ใน Price Recommendation Engine, What-if Simulation, Dashboard และ Web Application
 
@@ -71,6 +71,13 @@ leases = data["leases"]
 python -m kaverentai.data.validate_data
 ```
 
+สร้าง Modeling Dataset และฝึกโมเดล Time-to-Lease:
+
+```powershell
+python -m kaverentai.features.time_to_lease_features
+python -m kaverentai.models.train_time_to_lease
+```
+
 เปิด Web Application:
 
 ```powershell
@@ -85,9 +92,19 @@ pytest
 
 ## การแบ่งข้อมูลตามเวลา
 
+งานราคาค่าเช่าใช้ช่วงเวลาหลักของโครงการ:
+
 - Train: ปี 2023-2025
 - Validation: มกราคม-มีนาคม 2026
 - Test: เมษายน-มิถุนายน 2026
+
+งาน Time-to-Lease ใช้ **Matured Time Split** เพื่อให้ Test มีระยะติดตาม
+อย่างน้อย 52 สัปดาห์ ลดปัญหา right-censoring:
+
+- Train: ปี 2023-2024
+- Validation: มกราคม-มีนาคม 2025
+- Test: เมษายน-มิถุนายน 2025
+- หลังมิถุนายน 2025: `post_test` ไม่ใช้เลือกหรือประเมินโมเดล
 
 ห้ามใช้ Test ระหว่างเลือกโมเดลหรือปรับพารามิเตอร์
 

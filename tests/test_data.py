@@ -5,6 +5,10 @@ from kaverentai.config import (
     DEFAULT_TRAIN_END,
     DEFAULT_VALIDATION_END,
     RANDOM_SEED,
+    TIME_TO_LEASE_MIN_FOLLOW_UP_WEEKS,
+    TIME_TO_LEASE_TEST_END,
+    TIME_TO_LEASE_TRAIN_END,
+    TIME_TO_LEASE_VALIDATION_END,
     load_model_config,
 )
 from kaverentai.data.load_data import TABLES, load_all_data
@@ -59,3 +63,11 @@ def test_runtime_settings_come_from_model_config() -> None:
     assert DEFAULT_TRAIN_END == config["time_split"]["train_end"]
     assert DEFAULT_VALIDATION_END == config["time_split"]["validation_end"]
     assert RANDOM_SEED == config["random_seed"]
+    ttl_config = config["models"]["time_to_lease"]["evaluation"]
+    assert TIME_TO_LEASE_TRAIN_END == ttl_config["train_end"]
+    assert TIME_TO_LEASE_VALIDATION_END == ttl_config["validation_end"]
+    assert TIME_TO_LEASE_TEST_END == ttl_config["test_end"]
+    assert (
+        TIME_TO_LEASE_MIN_FOLLOW_UP_WEEKS
+        == ttl_config["minimum_follow_up_weeks"]
+    )
