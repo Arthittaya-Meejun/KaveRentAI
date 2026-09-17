@@ -9,20 +9,21 @@
 - `Review` — ทำเสร็จแล้ว รออีกคนตรวจ
 - `Done` — ตรวจแล้วและใช้งานได้
 
-## ทอฝัน: Data และ Classification
+## ทอฝัน: Data และ Time-to-Lease
 
 | งาน | ไฟล์หลัก | สถานะ |
 |---|---|---|
 | ตรวจคุณภาพข้อมูลทั้ง 5 ตาราง | `notebooks/01_common_data_quality.ipynb` | Done |
 | ตรวจโค้ดโหลดข้อมูลที่เตรียมไว้ | `src/kaverentai/data/load_data.py` | Done |
 | ตรวจโค้ดตรวจสอบข้อมูลที่เตรียมไว้ | `src/kaverentai/data/validate_data.py` | Done |
-| EDA อัตราการต่อสัญญาระดับโครงการ–เดือน | `notebooks/02_renewal_eda.ipynb` | Done |
-| สร้าง Feature อัตราการต่อสัญญา | `src/kaverentai/features/renewal_rate_features.py` | Done |
-| สร้างโมเดลอัตราการต่อสัญญา | `src/kaverentai/models/train_renewal_rate.py` | Done |
-| EDA โอกาสปล่อยเช่า | `notebooks/03_lease_probability_eda.ipynb` | Done |
-| สร้าง Feature โอกาสปล่อยเช่า | `src/kaverentai/features/lease_probability_features.py` | Done |
-| สร้างโมเดลโอกาสปล่อยเช่า | `src/kaverentai/models/train_lease_probability.py` | Done |
-| สร้างตัวประเมินโมเดล Classification | `src/kaverentai/models/evaluate_classification.py` | Done |
+| EDA ระยะเวลาในการปล่อยเช่าและตรวจ Outlier | `notebooks/02_time_to_lease_eda.ipynb` | Review |
+| ตรวจ Feature ที่ทราบ ณ วันเริ่มลงประกาศและป้องกัน Data Leakage | `notebooks/02_time_to_lease_eda.ipynb` | Review |
+| สร้าง Modeling Dataset สำหรับ Time-to-Lease | `src/kaverentai/features/time_to_lease_features.py` | Todo |
+| สร้างและเปรียบเทียบ Multiple Linear Regression กับ Random Forest Regressor | `src/kaverentai/models/train_time_to_lease.py` | Todo |
+| ประเมินโมเดลด้วย MAE, RMSE และ R² บนข้อมูลแบ่งตามเวลา | `src/kaverentai/models/evaluate_time_to_lease.py` | Todo |
+| สร้างฟังก์ชันทำนายจำนวนสัปดาห์สำหรับเชื่อม Price Engine และ Web Application | `src/kaverentai/models/time_to_lease_predictor.py` | Todo |
+| ทดสอบ Feature, Data Split และผลลัพธ์ของ Time-to-Lease | `tests/test_time_to_lease.py` | Todo |
+| สรุปผล Time-to-Lease สำหรับรายงานฉบับสุดท้าย | `notebooks/06_final_results.ipynb` | Todo |
 
 ## อาทิตยา: Regression และ Decision System
 
@@ -32,9 +33,6 @@
 | EDA ราคาค่าเช่า | `notebooks/04_rental_price_eda.ipynb` | Todo |
 | สร้าง Feature ราคาค่าเช่า | `src/kaverentai/features/rental_price_features.py` | Todo |
 | สร้างโมเดลราคาค่าเช่า | `src/kaverentai/models/train_rental_price.py` | Todo |
-| EDA ระยะเวลาปล่อยเช่า | `notebooks/05_weeks_on_market_eda.ipynb` | Todo |
-| สร้าง Feature ระยะเวลาปล่อยเช่า | `src/kaverentai/features/weeks_on_market_features.py` | Todo |
-| สร้างโมเดลระยะเวลาปล่อยเช่า | `src/kaverentai/models/train_weeks_on_market.py` | Todo |
 | สร้างตัวประเมินโมเดล Regression | `src/kaverentai/models/evaluate_regression.py` | Todo |
 | สร้างระบบแนะนำราคา | `src/kaverentai/recommendation/price_engine.py` | Todo |
 | สร้างระบบโปรโมชั่นด้านราคา | `src/kaverentai/recommendation/promotion_engine.py` | Todo |

@@ -6,24 +6,18 @@
 
 ## ขอบเขตของระบบ
 
-โปรเจกต์ประกอบด้วยโมเดลหลัก 4 งาน
+โปรเจกต์ประกอบด้วยโมเดลหลัก 2 งาน
 
 | งาน | Target | Baseline | โมเดลเปรียบเทียบ | โมเดลที่เลือก |
 |---|---|---|---|---|
-| อัตราการต่อสัญญารายโครงการ–เดือน | `renewal_rate` | Historical-rate Baseline | Binomial Logistic Regression | Historical-rate Baseline |
 | ราคาค่าเช่า | `rent` | Linear Regression | CatBoostRegressor | รอสรุปผล |
-| โอกาสปล่อยเช่าภายใน 4 สัปดาห์ | `leased_within_4_weeks` | Logistic Regression | CatBoostClassifier | CatBoostClassifier |
-| ระยะเวลาปล่อยเช่า | `weeks_on_market` | Linear Regression | CatBoostRegressor | รอสรุปผล |
+| ระยะเวลาปล่อยเช่า | `weeks_on_market` | Multiple Linear Regression | Random Forest Regressor | รอสรุปผล |
 
 ผลจากโมเดลจะนำไปใช้ใน Price Recommendation Engine, What-if Simulation, Dashboard และ Web Application
 
-งาน Renewal ใช้หน่วยวิเคราะห์ระดับ **โครงการ–เดือน** เพื่อประมาณอัตราและจำนวน
-สัญญาที่คาดว่าจะต่อ ไม่ได้ใช้เพื่อระบุผู้เช่ารายบุคคล โดยผล Validation ปัจจุบัน
-เลือก Historical-rate Baseline เนื่องจากให้ความคลาดเคลื่อนต่ำกว่าโมเดลเปรียบเทียบ
-
-งาน Lease Probability ใช้ข้อมูลที่ทราบในวันลงประกาศเพื่อประมาณโอกาสปล่อยเช่า
-ภายใน 4 สัปดาห์ และตัดประกาศช่วงท้ายที่มีเวลาติดตามไม่ครบออก ผล Validation
-เลือก CatBoostClassifier เนื่องจากให้ Log Loss ต่ำกว่า Logistic Regression
+งาน Time-to-Lease ใช้ข้อมูลที่ทราบ ณ วันเริ่มลงประกาศ เพื่อประมาณจำนวนสัปดาห์
+ที่คาดว่าจะใช้ในการปล่อยเช่า และใช้เฉพาะประกาศที่สังเกตการปล่อยเช่าสำเร็จแล้ว
+สำหรับการฝึกและประเมินโมเดล Regression
 
 ## โครงสร้างโปรเจกต์
 
@@ -77,14 +71,6 @@ leases = data["leases"]
 python -m kaverentai.data.validate_data
 ```
 
-สร้างข้อมูลและฝึกโมเดล Lease Probability:
-
-```powershell
-python -m kaverentai.features.lease_probability_features
-python -m kaverentai.models.train_lease_probability
-python -m kaverentai.models.diagnose_lease_probability
-```
-
 เปิด Web Application:
 
 ```powershell
@@ -107,8 +93,8 @@ pytest
 
 ## การแบ่งงาน
 
-- ทอฝัน: Data Quality, Common Features, Renewal และ Lease Probability
-- อาทิตยา: Time Split, Rental Price, Weeks-on-market, Price Engine, What-if และ Web Application
+- ทอฝัน: Data Quality และ Time-to-Lease
+- อาทิตยา: Time Split, Rental Price, Price Engine, What-if และ Web Application
 
 ทั้งสองคนทำ EDA ใน Notebook แยกกัน และนำโค้ดที่ต้องใช้ร่วมกันมาไว้ใน `src/kaverentai/`
 

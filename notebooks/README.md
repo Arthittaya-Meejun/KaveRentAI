@@ -5,17 +5,12 @@ Notebook ใช้สำหรับ EDA การทดลอง และส�
 | ลำดับ | ชื่อไฟล์ | ผู้รับผิดชอบ |
 |---|---|---|
 | 1 | `01_common_data_quality.ipynb` | ทอฝัน |
-| 2 | `02_renewal_eda.ipynb` | ทอฝัน |
-| 3 | `03_lease_probability_eda.ipynb` | ทอฝัน |
+| 2 | `02_time_to_lease_eda.ipynb` | ทอฝัน |
 | 4 | `04_rental_price_eda.ipynb` | อาทิตยา |
-| 5 | `05_weeks_on_market_eda.ipynb` | อาทิตยา |
 | 6 | `06_final_results.ipynb` | อาทิตยา และทอฝันช่วยตรวจ |
 
 แต่ละคนสร้างและแก้เฉพาะ Notebook ของตัวเอง เพื่อลดปัญหา Git conflict
 
-`02_renewal_eda.ipynb` ใช้หน่วยวิเคราะห์ระดับโครงการ–เดือน และประเมิน
-Historical-rate Baseline เทียบกับ Binomial Logistic Regression สำหรับงาน
-Renewal Rate Forecasting
-
-`03_lease_probability_eda.ipynb` ใช้ข้อมูลเฉพาะวันลงประกาศ และนิยาม Target
-เป็นการปล่อยเช่าภายใน 4 สัปดาห์ เพื่อหลีกเลี่ยงการใช้ประกาศที่ยังติดตามผลไม่ครบ
+`02_time_to_lease_eda.ipynb` ใช้ `weeks_on_market` เป็น Target และใช้เฉพาะ
+ประกาศที่ `leased = True` สำหรับงาน Regression โดย Feature ต้องเป็นข้อมูลที่
+ทราบแล้ว ณ วันเริ่มลงประกาศ
